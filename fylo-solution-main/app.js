@@ -3,8 +3,7 @@ let totalSpace = 1000;
 let uploadedFiles = [];
 
 // // Function to validate and upload files
-function validateFile(){
-    const fileInput = document.getElementById('upload');
+function validateFile(fileInput){
     const file = fileInput.files[0];
     if(file){
         const fileType = file.type.split('/')[1];
@@ -26,10 +25,42 @@ function updateDiskSpace(fileSize){
     if (remainingSpace >= 0){
         // Update available space with animation
         diskSpaceElement.textContent = `Available space: ${remainingSpace} MB`;
+        updateDiskSpace(remainingSpace);
     } else {
         alert ("There is no available space");
     }
 }
+
+// Function to update progress bar
+function updateProgressBar(remainingSpace){
+    const progressBar = document.getElementById('progressBar');
+    const usedSpacePercentage = ((totalSpace - remainingSpace) / totalSpace) * 100;
+    progressBar.style.width = usedSpacePercentage + '%';
+}
+
+// Function to display uploaded file names
+function displayFileNames(){
+    const fileListElement = document.getElementById('fileList');
+    fileListElement.innerHTML = '';
+    uploadedFiles.forEach(file => {
+       const fileName = document.createElement('li');
+       fileName.textContent = file.name;
+       fileListElement.appendChild(fileName);
+    });
+}
+
+
+// Function to handle file input change event
+function handleFileInput() {
+    const fileInput = document.getElementById('upload');
+    validateFile(fileInput);
+    displayFileNames();
+}
+
+// Event listener for file input change
+document.getElementById('upload').addEventListener('change', handleFileInput);
+
+
 
 
 // Function to handle multiple file uploads
