@@ -27,6 +27,16 @@
                 <div class="icon-img">
                     <img src="images/icon-upload.svg" alt="" aria-hidden="true" />
                 </div>
+
+                <input type="file" id="upload" accept=".jpg, .jpeg, .gif, .png" multiple onchange="validateFile()">
+
+                <ul id="fileList"></ul>
+                <div id="diskSpace">Available space: 1000 MB</div>
+                <div id="progressBarContainer">
+                    <div id="progressBar"></div>
+                </div>
+
+
             </section>
         </section>
         <!-- Storage Container -->
@@ -42,7 +52,6 @@
             </section>
             <h2>
                 <span>0 MB</span>
-                <span>100 MB</span>
             </h2>
             <!-- GB left -->
             <section class="gb-left">
@@ -50,6 +59,9 @@
             </section>
         </section>
     </main>
+
+
+    <script src="app.js"></script>
 </body>
 
 </html>
