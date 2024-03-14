@@ -24,10 +24,10 @@
                 <div class="icon-img">
                     <img src="images/icon-folder.svg" alt="" aria-hidden="true" />
                 </div>
-                <div class="icon-img">
-                    <img src="images/icon-upload.svg" alt="" aria-hidden="true" />
+                <div class="icon-img upload-btn">
+                        <input type="file" id="upload" accept=".jpg, .jpeg, .gif, .png" style="display: none">
+                        <img src="images/icon-upload.svg" id="uploadImage" alt="Upload Image" aria-hidden="true">
                 </div>
-                <input type="file" id="upload" accept=".jpg, .jpeg, .gif, .png" onchange="validateFile()">
 
             </section>
         </section>
@@ -54,7 +54,7 @@
     </main>
 
 
-    <script src=""></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

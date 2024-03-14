@@ -87,6 +87,9 @@ main {
   border-radius: 10px;
   padding: 0.8rem;
 }
+.icon-img:hover {
+  cursor: pointer;
+}
 
 .icon-img img {
   width: 1.4rem;
@@ -236,3 +239,4 @@ h2 {
     display: none;
   }
 }
+
