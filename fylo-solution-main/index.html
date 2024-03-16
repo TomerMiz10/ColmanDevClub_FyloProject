@@ -25,30 +25,36 @@
                     <img src="images/icon-folder.svg" alt="" aria-hidden="true" />
                 </div>
                 <div class="icon-img upload-btn">
-                        <input type="file" id="upload" accept=".jpg, .jpeg, .gif, .png" style="display: none">
+                    <label for="upload">
                         <img src="images/icon-upload.svg" id="uploadImage" alt="Upload Image" aria-hidden="true">
+                    </label>
+                    <input type="file" id="upload" onchange="handleFileInput(this)" accept=".jpg, .jpeg, .gif, .png, .svg" style="display: none">
                 </div>
 
+<!--                <ul id="fileList" class="file-list"></ul>-->
             </section>
         </section>
+
         <!-- Storage Container -->
         <section class="storage-container">
-            <h1>You've used <span>815 MB</span> of your storage</h1>
+            <h1>You've used <span id="sizeUsed">0 MB</span> of your storage</h1>
             <!-- Progress Bar -->
-            <section class="progress-bar">
-                <div class="gradient-bar">
+            <section class="progress-bar" >
+                <div class="gradient-bar" id="progressBar">
                     <div class="dot-container">
                         <div class="dot"></div>
                     </div>
                 </div>
             </section>
+            <p id="selectedFile" class="selectedFile"></p>
             <h2>
                 <span>0 MB</span>
-                <span>100 MB</span>
+                <span id="totalSize">100 MB</span>
             </h2>
             <!-- GB left -->
             <section class="gb-left">
-                <p>185 <span>MB left</span></p>
+                <p id="sizeLeft" >100</p> <span>MB left</span>
+<!--                <div class="file-list-container"></div>-->
             </section>
         </section>
     </main>
