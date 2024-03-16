@@ -28,8 +28,9 @@
                     <label for="upload">
                         <img src="images/icon-upload.svg" id="uploadImage" alt="Upload Image" aria-hidden="true">
                     </label>
-                    <input type="file" id="upload" onchange="handleFileInput(this)" accept=".jpg, .jpeg, .gif, .png, .svg" style="display: none">
+                    <input type="file" id="upload" onchange="handleFileInput(this)" multiple accept=".jpg, .jpeg, .gif, .png, .svg" style="display: none">
                 </div>
+
 
             </section>
         </section>
@@ -50,9 +51,12 @@
                 <span>0 MB</span>
                 <span id="totalSize">100 MB</span>
             </h2>
+            <div id="clear-container">
+                <button id="clear">Clear</button>
+            </div>
             <!-- GB left -->
             <section class="gb-left">
-                <p id="sizeLeft" >100</p> <span>MB left</span>
+                <p id="sizeLeft" >100</p> <span>MB Left</span>
 <!--                <div class="file-list-container"></div>-->
             </section>
         </section>

@@ -13,13 +13,13 @@ const shortedSizeNumber = (x) =>{
 };
 
 const init = () =>{
-  usedSize = Number(window.localStorage.getItem('usedSize'));
-  percentage = 100 * (usedSize / totalSize) +4;
+  usedSize = Number(window.localStorage.getItem('usedSize')) || 0;
+  percentage = 100 * (usedSize / totalSize) +1;
   sizeLeft = totalSize - usedSize;
   totalSizeElement.innerText = totalSize + ' MB';
   sizeLeftElement.innerText = shortedSizeNumber(sizeLeft);
   usedSizeElement.innerText = shortedSizeNumber(usedSize) + ' MB';
-  progressBarElement.style.width = percentage.toString(10) + '%';
+  progressBarElement.style.width = percentage + '%';
 };
 
 const addCurrentFileSize = (s) => {
@@ -27,10 +27,10 @@ const addCurrentFileSize = (s) => {
     if (usedSize + s < totalSize) {
         usedSize += s;
         sizeLeft = totalSize - usedSize;
-        percentage = 100 * (usedSize / totalSize) - 4;
+        percentage = 100 * (usedSize / totalSize) - 1;
         usedSizeElement.innerText = shortedSizeNumber(usedSize) + ' MB';
         sizeLeftElement.innerText = shortedSizeNumber(sizeLeft);
-        progressBarElement.style.width = percentage.toString(10) + '%';
+        progressBarElement.style.width = percentage + '%';
         progressBarElement.style.transition = 'width 0.5s ease 0.1s';
     } else {
         alert('There is not enough space on the disk');
@@ -65,10 +65,14 @@ const handleFileInput = (e) => {
     }
 };
 
-const clear = document.getElementById('clear');
-clear.addEventListener('click', () => {
-    usedSize = 0;
-    init()
+document.addEventListener('DOMContentLoaded', () => {
+    const clear = document.getElementById('clear');
+    clear.addEventListener('click', () => {
+        usedSize = 0;
+        progressBarElement.style.width = '0%';
+        selectedFileElement.innerHTML = ''; // Remove all children
+        init()
+    });
 });
 
 // main start
